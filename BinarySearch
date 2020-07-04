@@ -1,0 +1,53 @@
+import java.util.Scanner;
+import java.util.Arrays;
+class BinarySearch{
+
+   public static int binarySearch(int[] x, int n, int value){
+   int init = 1, finals = n;
+   int mid;
+      while(init <= finals){
+         mid = (init + finals)/2;
+         if(x[mid] == value){
+            return x[mid];
+         }
+         else{
+            if(x[mid] < value){
+            init = mid + 1;
+            }
+            else{
+            finals = mid - 1;
+            }
+         }
+      
+      }
+      return -1;
+   }
+   
+   public static void main(String[] args){
+      Scanner scan = new Scanner(System.in);
+      System.out.println("Enter array length: ");
+      int n = scan.nextInt();
+      int[] x = new int[n];
+      System.out.println("Enter array: ");
+      for(int i = 0; i<n; i++){
+         x[i] = scan.nextInt();
+      }
+      System.out.println("Enter number to search: ");
+      int value = scan.nextInt();
+      Arrays.sort(x);
+      int result = binarySearch(x, n, value);
+      System.out.println("Array: ");
+      for(int i = 0; i<n; i++){
+         System.out.print(x[i] + " ");
+      }
+      
+      System.out.println("\nValues to search: " + value);
+      System.out.println("Result: ");
+      if (result > -1){
+         System.out.println("Success !!!");
+      }
+      else System.out.println("Error 404 not found !");
+      
+   }
+
+}
