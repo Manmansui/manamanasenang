@@ -18,7 +18,7 @@ class BinarySearch{
             finals = mid - 1;
             }
          }
-     
+    
       }
       return -1;
    }
