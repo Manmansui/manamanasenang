@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Greatest_CommonDivisor{
+   public static void main(String [] args){
+   int num1, num2, GCD, remainder;
+      Scanner scan = new Scanner(System.in);
+      System.out.print("Enter first number: ");
+      num1 = scan.nextInt();
+      System.out.print("Enter second number: ");
+      num2 = scan.nextInt();
+      
+      if(num1 > num2){
+        
+         do{
+             remainder = num1 % num2;
+             num1 = num2;
+             num2 = remainder; 
+         }while(remainder != 0);
+        System.out.println("Greatest common divisor: " + num1);
+      }else{
+      
+      do{
+             remainder = num2 % num1;
+             num2 = num1;
+             num1 = remainder; 
+         }while(remainder != 0);
+        System.out.println("Greatest common divisor: " + num2);
+      }
+
+   }
+
+}
