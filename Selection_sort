@@ -1,0 +1,44 @@
+import java.util.Scanner;
+import java.util.Arrays;
+class SelectionSort{
+
+   public static int SmallestPos(int[] x, int first, int last){
+      int minIndex = first;
+      for(int i = (first+1); i<last; i++){
+         if(x[i]<=x[minIndex]){
+            minIndex = i;
+         }
+      }
+      return minIndex;
+   }
+   
+   public static void SwapPos(int[] x, int first, int second){
+      int temp;
+      temp = x[first];
+      x[first] = x[second];
+      x[second] = temp;
+   }
+   
+   public static void SelectionSort(int[] x, int n){
+      int min;
+      for(int i = 0; i<n; i++){
+         min = SmallestPos(x, i, n);
+         SwapPos(x, i, min);
+      
+   }
+   
+   }
+   
+   public static void main(String[] args){
+      int[] x = {12, 5, 7, 3, 9, 8, 2, 5};
+      int length = x.length;
+      SelectionSort(x, length);
+      
+      for(int i = 0; i<length; i++){
+         System.out.print(x[i] + " ");
+      }
+      
+      
+   }
+
+}
