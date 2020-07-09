@@ -1,0 +1,175 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+
+class testing implements ActionListener{
+   private static String[] str = {"KK14203", "KK14403", "KT14203", "UW00202", "UN00202"};
+   private static JTextField eName;
+   private static JTextField eMatric;
+   private static JRadioButton eRating1;
+   private static JRadioButton eRating2;
+   private static JRadioButton eRating3;
+   private static JRadioButton eRating4;
+   private static JRadioButton eRating5;
+   private static JCheckBox eOut1;
+   private static JCheckBox eOut2;
+   private static JTextArea output1;
+   private static JComboBox eCourse;
+   private static ButtonGroup G;
+
+
+
+	public static void main(String[] args){
+		JFrame frame = new JFrame("testing");
+      JPanel panel = new JPanel();
+		frame.setSize(500, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.add(panel);
+      
+		panel.setLayout(null);
+		
+		JLabel header = new JLabel("-Course Evaluation Form-");
+      header.setBounds(150, 5, 300, 20);
+      panel.add(header);
+      
+      //name
+      JLabel name = new JLabel("1) Name:");
+      name.setBounds(5, 50, 100, 20);
+      panel.add(name);
+      
+      eName = new JTextField();
+      eName.setBounds(90, 50, 150, 20);
+      panel.add(eName);
+      
+      //matricNum
+      JLabel matric = new JLabel("2) Matric No:");
+      matric.setBounds(5, 75, 100, 20);
+      panel.add(matric);
+      
+      eMatric = new JTextField();
+      eMatric.setBounds(90, 75, 150, 20);
+      panel.add(eMatric);
+      
+      //Course
+      JLabel course = new JLabel("3) Course:");
+      course.setBounds(5, 100, 100, 20);
+      panel.add(course);
+      
+      eCourse = new JComboBox(str);
+      eCourse.setBounds(90, 100, 100, 20);//
+      panel.add(eCourse);
+      
+      //rating
+      JLabel rating = new JLabel("4) Rating:");
+      rating.setBounds(5, 125, 100, 20);
+      panel.add(rating);
+      
+      eRating1 = new JRadioButton("1");
+      eRating1.setBounds(90, 125, 50, 20);
+      
+      eRating2 = new JRadioButton("2");
+      eRating2.setBounds(140, 125, 50, 20);
+      
+      eRating3 = new JRadioButton("3");
+      eRating3.setBounds(190, 125, 50, 20);
+      
+      eRating4 = new JRadioButton("4");
+      eRating4.setBounds(240, 125, 50, 20);
+      
+      eRating5 = new JRadioButton("5");
+      eRating5.setBounds(290, 125, 50, 20);
+
+      G = new ButtonGroup();
+      G.add(eRating1);
+      G.add(eRating2);
+      G.add(eRating3);
+      G.add(eRating4);
+      G.add(eRating5);
+      panel.add(eRating1);
+      panel.add(eRating2);
+      panel.add(eRating3);
+      panel.add(eRating4);
+      panel.add(eRating5);
+      
+      //outcome
+      JLabel outcome = new JLabel("5) Outcomes:");
+      outcome.setBounds(5, 150, 100, 20);
+      panel.add(outcome);
+      
+      eOut1 = new JCheckBox("Basic Knowledge", false);
+      eOut1.setBounds(90, 150, 135, 20);
+      //eOut1.setSelected(false);
+      panel.add(eOut1);
+      
+      eOut2 = new JCheckBox("Advance Knowledge", false);
+      eOut2.setBounds(225, 150, 150, 20);
+      //eOut2.setSelected(true);
+      panel.add(eOut2);
+      
+      JButton submit= new JButton("Submit");
+      submit.setBounds(5, 175, 90, 25);
+      submit.addActionListener(new testing());
+      panel.add(submit);
+      
+      //output
+      output1 = new JTextArea("",10,10);
+      output1.setBounds(5, 220, 300, 150);
+      panel.add(output1);
+      
+      
+      
+		frame.setVisible(true);
+      
+	}
+   
+   public void actionPerformed(ActionEvent e){
+      
+      String name = eName.getText();
+      String matric = eMatric.getText();
+      String course = eCourse.getSelectedItem().toString(); 
+      
+      String rate;
+      if(eRating1.isSelected()) rate = "1";
+      else if(eRating2.isSelected()) rate = "2";
+      else if(eRating3.isSelected()) rate = "3"; 
+      else if(eRating4.isSelected()) rate = "4"; 
+      else rate = "5";      
+      
+      boolean check1, check2;
+      String outcomez = "";
+      check1 = eOut1.isSelected();
+      check2 = eOut2.isSelected();
+      if(check1) outcomez = "Basic Knowledge";
+      else if(check2) outcomez = "Advance Knowledge";
+      else if(check1 && check2) outcomez = "Basic Knowledge & Advance Knowledge";
+      else if(!check1 && !check2) outcomez = "Zero";
+      
+      output1.setText("Name: " + name.toUpperCase() + "\nMatric No: " + matric.toUpperCase() + "\nCourse: " + course + "\nRating: " + rate + "\nOutcomes: " + outcomez);
+      
+      //export to file anjayy.txt
+      String fname = "anjayy.txt";
+      String aName = "Name: " + name.toUpperCase();
+      String aMatric = "Matric No: " + matric.toUpperCase();
+      String aCourse = "Course: " + course;
+      String aRate = "Rating: " + rate;
+      String aOutcome = "Outcomes: " + outcomez;
+      try{
+         printWriter(fname, aName, aMatric, aCourse, aRate, aOutcome);
+      }
+      catch(IOException f){
+         System.out.println("ERROR: " + f);
+      }
+      
+   }
+   
+   public static void printWriter(String fname, String aName, String aMatric, String aCourse, String aRate, String aOutcomes) throws IOException{
+      PrintWriter out = new PrintWriter(fname); 
+      out.println(aName);
+      out.println(aMatric);
+      out.println(aCourse);
+      out.println(aRate);
+      out.println(aOutcomes);
+      out.close();   
+   }
+}
