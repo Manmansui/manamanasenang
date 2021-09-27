@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:hwads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#403249"
+    tools:context=".successLoginActivity">
+
+    <TextView
+        android:id="@+id/txt_view"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/oswald_medium"
+        android:gravity="center"
+        android:text="Machine Learning KIT"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.212" />
+
+    <Button
+        android:id="@+id/btn_txt_translator"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/oswald_medium"
+        android:text="Text Translator"
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_view"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/txt_view"
+        app:layout_constraintTop_toBottomOf="@+id/txt_view" />
+
+    <Button
+        android:id="@+id/btn_img_analyzer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/oswald_medium"
+        android:text="Image Analyzer"
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_txt_translator"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_txt_translator"
+        app:layout_constraintTop_toBottomOf="@+id/btn_txt_translator" />
+
+    <Button
+        android:id="@+id/btn_face_analyzer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/oswald_medium"
+        android:text="Face Analyzer"
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_img_analyzer"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_img_analyzer"
+        app:layout_constraintTop_toBottomOf="@+id/btn_img_analyzer" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/oswald_medium"
+        android:text="Developed By Manmansui at codeX.org"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
