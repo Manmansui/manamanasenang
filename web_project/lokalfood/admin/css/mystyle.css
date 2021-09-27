@@ -1,0 +1,442 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+	background-color: #f1f1f1;		
+}
+
+p {
+	font-size: 12pt;
+	color: #000000;
+}
+
+h1 {
+	color: #000000;
+}
+
+.header {
+	background-color: #f1f1f1;
+	color: #000000;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.footer {
+    background-color: #9e9e9e;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+/* For desktop: */
+.col-nav {width: 25%;}
+.col-mid {width: 75%;}
+/* .col-right {width: 25%;}*/
+.col-secLeft {width: 50%;}
+.col-secRight {width: 50%;}
+
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: #909090;
+    color: #ffffff;
+	font-size: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menu li:hover {
+    background-color: #C8B4BA;
+}
+
+.aside {
+    background-color: #909090;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.image {
+	width: 100%;  height: auto;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+.imgcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.product-price {
+	float:left;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+#carttable {
+    font-family: "Raleway", sans-serif;
+    border-collapse: collapse;
+    width: 100%;	
+}
+
+#carttable td, #carttable th {
+    border: 1px solid #616161;
+    padding: 8px;	
+}
+
+#carttable tr:nth-child(even){background-color: #ddd;}
+#carttable tr:hover {background-color: #C8B4BA;}
+
+#carttable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: black;
+}
+
+#carttable td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #CICD97;
+    color: black;
+}
+
+.checked {
+  color: orange;
+}
+.card {
+  margin-bottom: 30px;
+}
+.card .card-subtitle {
+  color: #99abb4;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+.card-inverse .card-bodyquote .blockquote-footer {
+  color: rgba(255, 255, 255, 0.65);
+}
+.card-inverse .card-link {
+  color: rgba(255, 255, 255, 0.65);
+}
+.card-inverse .card-subtitle {
+  color: rgba(255, 255, 255, 0.65);
+}
+.card-inverse .card-text {
+  color: rgba(255, 255, 255, 0.65);
+}
+.card-success {
+  background: #26dad2 none repeat scroll 0 0;
+  border-color: #26dad2;
+}
+.card-danger {
+  background: #ef5350 none repeat scroll 0 0;
+  border-color: #ef5350;
+}
+.card-warning {
+  background: #ffb22b none repeat scroll 0 0;
+  border-color: #ffb22b;
+}
+.card-info {
+  background: #1976d2 none repeat scroll 0 0;
+  border-color: #1976d2;
+}
+.card-primary {
+  background: #5c4ac7 none repeat scroll 0 0;
+  border-color: #5c4ac7;
+}
+.card-dark {
+  background: #2f3d4a none repeat scroll 0 0;
+  border-color: #2f3d4a;
+}
+.card-megna {
+  background: #00897b none repeat scroll 0 0;
+  border-color: #00897b;
+}
+.card-actions {
+  float: right;
+}
+.card-actions a {
+  color: #67757c;
+  cursor: pointer;
+  font-size: 13px;
+  opacity: 0.7;
+  padding-left: 7px;
+}
+.card-actions a:hover {
+  opacity: 1;
+}
+.card-columns .card {
+  margin-bottom: 20px;
+}
+.collapsing {
+  transition: height 0.08s ease 0s;
+}
+.card-outline-info {
+  border-color: #1976d2;
+}
+.card-outline-info .card-header {
+  background: #1976d2 none repeat scroll 0 0;
+  border-color: #1976d2;
+}
+.card-outline-inverse {
+  border-color: #2f3d4a;
+}
+.card-outline-inverse .card-header {
+  background: #2f3d4a none repeat scroll 0 0;
+  border-color: #2f3d4a;
+}
+.card-outline-warning {
+  border-color: #ffb22b;
+}
+.card-outline-warning .card-header {
+  background: #ffb22b none repeat scroll 0 0;
+  border-color: #ffb22b;
+}
+.card-outline-success {
+  border-color: #26dad2;
+}
+.card-outline-success .card-header {
+  background: #26dad2 none repeat scroll 0 0;
+  border-color: #26dad2;
+}
+.card-outline-danger {
+  border-color: #ef5350;
+}
+.card-outline-danger .card-header {
+  background: #ef5350 none repeat scroll 0 0;
+  border-color: #ef5350;
+}
+.card-outline-primary {
+  border-color: #5c4ac7;
+}
+.card-outline-primary .card-header {
+  background: #5c4ac7 none repeat scroll 0 0;
+  border-color: #5c4ac7;
+}
+.card-body {
+  padding: 0;
+}
+.card {
+  background: #ffffff none repeat scroll 0 0;
+  margin: 15px 0;
+  padding: 20px;
+  border: 0 solid #e7e7e7;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+.card-subtitle {
+  font-size: 12px;
+  margin: 10px 0;
+}
+.card-title {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.card-title h4 {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.card-title p {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 12px;
+}
+
+.btn-primary {
+  background: #5c4ac7;
+  border: 1px solid #5c4ac7;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
+  -webkit-transition: 0.2s ease-in;
+  -o-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+.btn-primary:hover {
+  background: #5c4ac7;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  border: 1px solid #5c4ac7;
+}
+.btn-primary:active {
+  background: #6352ce;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+}
+.btn-primary:active:focus {
+  background-color: #6352ce;
+  border: 1px solid #6352ce;
+}
+.btn-primary:active:hover {
+  background-color: #6352ce;
+  border: 1px solid #6352ce;
+}
+.btn-primary:focus {
+  background: #6352ce;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  background-color: #6352ce;
+  border: 1px solid #6352ce;
+}
+.btn-primary.disabled {
+  background: #5c4ac7;
+  border: 1px solid #5c4ac7;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
+  -webkit-transition: 0.2s ease-in;
+  -o-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+.btn-primary.disabled:hover {
+  background: #5c4ac7;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  border: 1px solid #5c4ac7;
+}
+.btn-primary.disabled:active {
+  background: #6352ce;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+}
+.btn-primary.disabled:focus {
+  background: #6352ce;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+}
+.btn-primary.active {
+  background: #6352ce;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+}
+.btn-primary.active:focus {
+  background-color: #6352ce;
+  border: 1px solid #6352ce;
+}
+.btn-primary.active:hover {
+  background-color: #6352ce;
+  border: 1px solid #6352ce;
+}
+.btn-primary.disabled.active {
+  background: #6352ce;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+}
+
+thead tr th {
+  color: #455a64;
+  font-weight: 500;
+}
+thead tr th:last-child {
+  text-align: right;
+}
+tbody tr th {
+  color: #455a64;
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
+}
+tbody tr td {
+  font-family: 'Poppins', sans-serif;
+  color: #99abb4;
+}
+tbody tr td:last-child {
+  text-align: right;
+}
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+  line-height: 32px;
+  vertical-align: top;
+}
+.table > thead > tr > th {
+  border-bottom: 1px solid #e7e7e7;
+  font-weight: 600;
+}
+.table {
+  margin-bottom: 0;
+}
+.table .badge {
+  text-transform: uppercase;
+}
