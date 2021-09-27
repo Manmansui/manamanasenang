@@ -1,0 +1,131 @@
+* {
+ box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Raleway", sans-serif;
+	background-color: #ffe5b4;
+}
+
+p{
+	font-size: 12pt;
+	color: #000000;
+}
+
+ul{
+	line-height: 180%;
+	list-style-position: outside;
+}
+
+li{
+	padding: 5px 10px;
+	background-color: #E2E2DE;
+	border: 1px solid #DDDDDD;
+	border-radius: 10px;
+}
+
+small{
+	font-size: 10pt;
+	color: #000000;
+}
+
+h1, h2 {
+	color: #000000;
+}
+
+.image {
+	width: 100%; 
+	height: 400px; 
+}
+
+.header {
+	background-color: #F0777E;
+	color: #000000;
+
+}
+
+.para{
+	border-radius: 5px;
+	background-color: #ffe5b4;
+	padding: 10px;
+}
+
+/* Style the content */
+.row::after {
+	 content: "";
+	 clear: both;
+	 display: block;
+}
+
+.row_single{ /*use in contact tsk*/
+	width: 30%;
+}
+
+.footer {
+	 background-color: #ffe5b4;
+	 color: #ffffff;
+	 text-align: left;
+	 font-size: 12px;
+	 padding: 15px;
+}
+
+[class*="col-"] {
+	 float: left;
+	 padding: 15px;
+}
+
+.center{
+	margin: auto;
+	margin-bottom: 50px;
+	width: 30%;
+	height: 25%;
+	border: 5px solid #000;
+	border-radius: 8px;
+	padding: 10px;
+	background-color: #E2E2DE;
+}
+
+/* For desktop: */
+.col-left {width: 25%;} /* left column setting */
+.col-mid {width: 50%;} /* middle column setting */
+.col-right {width: 25%;} /* right column setting */
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+ [class*="col-"] {
+	width: 100%;
+ }
+}
+
+.aside { 	
+	 background-color: #726E6D;
+	 padding: 15px;
+	 color: #ffffff;
+	 text-align: center;
+	 box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px 
+	rgba(0,0,0,0.24);
+	border: none;
+	border-radius: 8px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+	 overflow: hidden;
+	 background-color: #333;
+}
+/* Style the topnav links */
+.topnav a {
+	 float: left;
+	 display: block;
+	 color: #f2f2f2;
+	 text-align: center;
+	 padding: 14px 16px;
+	 text-decoration: none;
+}
+/* Change color on hover */
+.topnav a:hover {
+	 background-color: #ddd;
+	 color: black;
+}
+

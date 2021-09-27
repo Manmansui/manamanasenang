@@ -1,0 +1,150 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="device-width, initial-scale=1.0">
+		<title>Sign Up pages</title>
+		<link rel="stylesheet" href="site.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				background-image: url(img/bg-login2.jpg);
+				background-size: cover;
+				background-repeat: no-repeat;
+			} 
+			h1 {
+				margin: 0px;
+				padding: 0px 0px 20px;
+				font-size: 22px;
+				text-align: center;
+				color: #fff;
+			}
+			.LoginBox {
+				width: 329px;
+				height: 500px;
+				background: #000;
+				color: #fff;
+				top: 50%;
+				left: 50%;
+				position: absolute;
+				transform: translate(-50%, -50%);
+				box-sizing: border-box;
+				padding: 70px 30px;
+			}
+
+			.LoginBox p{
+				margin: 0;
+				padding: 0;
+				font-weight: bold;
+			}
+
+			
+			.LoginBox input[type="text"]{
+				border: none;
+				border-bottom: 1px solid #fff;
+				background: transparent;
+				outline: none;
+				height: 40px;
+				color: #fff;
+				font-size: 16px;
+				width: 110px;
+				margin-bottom: 10px;
+			}
+			.LoginBox input[type="password"], input[type="email"]{
+				border: none;
+				border-bottom: 1px solid #fff;
+				background: transparent;
+				outline: none;
+				height: 40px;
+				color: #fff;
+				font-size: 16px;
+				width: 250px;
+				margin-bottom: 10px;
+			}
+
+			.LoginBox input[type="submit"]{
+				border: none;
+				outline: none;
+				background-color: #DDB967;
+				height: 40px;
+				color: #fff;
+				font-size: 16px;
+				border-radius: 20px;
+				width: 250px;
+				margin-bottom: 10px;
+			}
+
+			.LoginBox input[type="submit"]:hover{
+				cursor: pointer;
+				background-color: #D2A337;
+				color: #000;
+			}
+
+			.LoginBox a{
+				text-decoration: none;
+				font-size: 12px;
+				line-height: 20px;
+				color: darkgrey;
+			}
+
+			.LoginBox a:hover{
+				color: #DDB967;
+			}
+
+			.avatar {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				position: absolute;
+				top: -7%;
+				left: 35%;
+			}
+
+		</style>
+	
+	</head>
+
+	<body>
+		<div class="LoginBox">
+			<img src="img/avatar.jpg" class= "avatar">
+			<h1> Sign Up </h1>
+			<form action="register.php" method="post">
+					<p>
+						<label for="firstName" style="color: #fff;">First name:</label>
+						<label for="lastname" style="color: #fff; margin-left: 60px;">Last name:</label>
+						<br>
+						<input type="text" name="firstname" id="firstname" placeholder="Enter..." required>
+						<input type="text" name="lastname" id="lastname" style= "margin-left: 30px;" placeholder="Enter..." required>
+					</p>
+					<p>
+						<label for="userName" style="color: #fff;">Username:</label>
+						<br>
+						<input type="text" name="userName" id="userName" style= "width: 250px;"placeholder="Enter username" required>
+					</p>
+					<p>
+						<label for="userPassword" style="color: #fff;">Password:</label>
+						<br>
+						<input type="password" name="userPassword" id="userPassword" placeholder="Enter password" required>
+					</p>
+					<p>
+						<label for="userEmail" style="color: #fff;">Email:</label>
+						<br>
+						<input type="email" name="userEmail" id="userEmail" placeholder="Enter email" required>
+					</p>
+					
+					
+					<p>
+						<input type="submit" name="" value="Sign Up" required>
+					</p>
+					<p style="color: #fff; font-size: 12px;">
+						Already have an account? <a href= "index.html"> Login here </a>
+					</p>
+					
+					
+				</form>
+		</div>
+	
+	</body>
+</html>
