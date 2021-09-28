@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,12 +28,18 @@ import com.huawei.hms.mlsdk.tts.MLTtsEngine;
 import com.huawei.hms.mlsdk.tts.MLTtsError;
 import com.huawei.hms.mlsdk.tts.MLTtsWarn;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Text_Translation extends AppCompatActivity {
 
-    private Button btn_translate, btn_swap_lang, btn_speak;
+    private Button btn_translate, btn_reset, btn_speak;
     private TextView txt_swap_lang;
     private EditText et_input, et_output;
     private boolean swap_lang = true;
+
+    private String stringInput = "", stringOutput = "";
+    private String lang_speak = "", speaker = "";
 
 
     @Override
@@ -40,33 +49,143 @@ public class Text_Translation extends AppCompatActivity {
 
 
         btn_translate = findViewById(R.id.btn_translate);
-        btn_swap_lang = findViewById(R.id.btn_swap_lang);
-        txt_swap_lang = findViewById(R.id.txt_language);
+        btn_reset = findViewById(R.id.btn_reset);
         btn_speak = findViewById(R.id.btn_speak_lang);
         et_input = findViewById(R.id.et_input);
         et_output = findViewById(R.id.et_output);
 
-        btn_swap_lang.setOnClickListener(new View.OnClickListener() {
+        Spinner spinner_input = findViewById(R.id.spinner_input);
+        Spinner spinner_output = findViewById(R.id.spinner_output);
+
+        List<String> language = new ArrayList<String>();
+        language.add("English");
+        language.add("Chinese");
+        language.add("Arabic");
+        language.add("Indonesian");
+        language.add("Japanese");
+        language.add("French");
+        language.add("Italian");
+
+        List<String> language2 = new ArrayList<String>();
+        language2.add("Chinese");
+        language2.add("English");
+        language2.add("Arabic");
+        language2.add("Indonesian");
+        language2.add("Japanese");
+        language2.add("French");
+        language2.add("Italian");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, language);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, language2);
+        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_input.setAdapter(dataAdapter);
+        spinner_output.setAdapter(dataAdapter2);
+
+        spinner_input.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (adapterView.getItemAtPosition(i).toString()) {
+                    case "English":
+                        stringInput = "en";
+                        break;
+                    case "Chinese":
+                        stringInput = "zh";
+                        break;
+                    case "Arabic":
+                        stringInput = "ar";
+                        break;
+                    case "Indonesian":
+                        stringInput = "id";
+                        break;
+                    case "Japanese":
+                        stringInput = "ja";
+                        break;
+                    case "French":
+                        stringInput = "fr";
+                        break;
+                    case "Italian":
+                        stringInput = "it";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinner_output.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (adapterView.getItemAtPosition(i).toString()) {
+                    case "English":
+                        btn_speak.setVisibility(View.VISIBLE);
+                        stringOutput = "en";
+                        lang_speak = "en-US";
+                        speaker = MLTtsConstants.TTS_SPEAKER_FEMALE_EN;
+                        break;
+                    case "Chinese":
+                        btn_speak.setVisibility(View.VISIBLE);
+                        stringOutput = "zh";
+                        lang_speak = "zh-Hans";
+                        speaker = MLTtsConstants.TTS_SPEAKER_FEMALE_ZH;
+                        break;
+                    case "Arabic":
+                        btn_speak.setVisibility(View.GONE);
+                        stringOutput = "ar";
+                        break;
+                    case "Indonesian":
+                        btn_speak.setVisibility(View.GONE);
+                        stringOutput = "id";
+                        break;
+                    case "Japanese":
+                        btn_speak.setVisibility(View.GONE);
+                        stringOutput = "ja";
+                        break;
+                    case "French":
+                        btn_speak.setVisibility(View.VISIBLE);
+                        stringOutput = "fr";
+                        lang_speak = "fr-FR";
+                        speaker = MLTtsConstants.TTS_SPEAKER_FEMALE_FR;
+                        break;
+                    case "Italian":
+                        btn_speak.setVisibility(View.VISIBLE);
+                        stringOutput = "it";
+                        lang_speak = "it-IT";
+                        speaker = MLTtsConstants.TTS_SPEAKER_FEMALE_IT;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        btn_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 et_input.getText().clear();
                 et_output.getText().clear();
-                swap_lang = !swap_lang;
-                if (!swap_lang) {
-                    txt_swap_lang.setText("Chinese -> English");
-                } else {
-                    txt_swap_lang.setText("English -> Chinese");
-                }
             }
         });
 
         btn_translate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (swap_lang) {
-                    remoteTranslator_english_to_chinese(et_input.getText().toString());
+                if (et_input.getText().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Blank input detected!", Toast.LENGTH_SHORT).show();
                 } else {
-                    remoteTranslator_chinese_to_english(et_input.getText().toString());
+                    translator(et_input.getText().toString(), stringInput, stringOutput);
                 }
             }
         });
@@ -74,48 +193,50 @@ public class Text_Translation extends AppCompatActivity {
         btn_speak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (swap_lang) {
-                    chinese_speaking(et_output.getText().toString());
-                } else {
-                    english_speaking(et_output.getText().toString());
-                }
+                speaking(et_output.getText().toString(), lang_speak, speaker);
             }
         });
 
 
     }
 
+    private void translator(String sourceText, String sourceLang, String targetLang) {
+        if (sourceLang == null || targetLang == null) {
+            return;
+        } else {
+            MLApplication.getInstance().setApiKey(getResources().getString(R.string.api_key));
+            MLRemoteTranslateSetting setting =
+                    new MLRemoteTranslateSetting
+                            .Factory()
+                            .setSourceLangCode(sourceLang)
+                            .setTargetLangCode(targetLang)
+                            .create();
+            MLRemoteTranslator remoteTranslator = MLTranslatorFactory.getInstance().getRemoteTranslator(setting);
+            Task<String> task = remoteTranslator.asyncTranslate(sourceText);
+            task.addOnSuccessListener(new OnSuccessListener<String>() {
+                @Override
+                public void onSuccess(String text) {
+                    et_output.setText(text);
+                    Toast.makeText(getApplicationContext(), "Success translating...", Toast.LENGTH_SHORT).show();
+                }
 
-    private void chinese_speaking(String sourceText){
-        MLApplication.getInstance().setApiKey(getResources().getString(R.string.api_key));
-        MLTtsConfig mlTtsConfig = new MLTtsConfig()
-                // Set the text converted from speech to Chinese.
-                .setLanguage("zh-Hans")
-                // Set the Chinese timbre.
-                .setPerson(MLTtsConstants.TTS_SPEAKER_FEMALE_ZH)
-                // Set the speech speed. The range is (0, 5.0]. 1.0 indicates a normal speed.
-                .setSpeed(1.0f)
-                // Set the volume. The range is (0, 2). 1.0 indicates a normal volume.
-                .setVolume(1.0f);
-
-        MLTtsEngine mlTtsEngine = new MLTtsEngine(mlTtsConfig);
-        // Set the volume of the built-in player, in dBs. The value is in the range of [0, 100].
-        mlTtsEngine.setPlayerVolume(20);
-        // Update the configuration when the engine is running.
-        mlTtsEngine.updateConfig(mlTtsConfig);
-        mlTtsEngine.setTtsCallback(callback);
-
-        mlTtsEngine.speak(sourceText, MLTtsEngine.QUEUE_APPEND);
-
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(Exception e) {
+                    Toast.makeText(getApplicationContext(), "Failed translating...", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
-    private void english_speaking(String sourceText){
+
+    private void speaking(String sourceText, String language, String speaker) {
         MLApplication.getInstance().setApiKey(getResources().getString(R.string.api_key));
         MLTtsConfig mlTtsConfig = new MLTtsConfig()
                 // Set the text converted from speech to Chinese.
-                .setLanguage("en-US")
+                .setLanguage(language)
                 // Set the Chinese timbre.
-                .setPerson(MLTtsConstants.TTS_SPEAKER_FEMALE_EN)
+                .setPerson(speaker)//mlttsconstant
                 // Set the speech speed. The range is (0, 5.0]. 1.0 indicates a normal speed.
                 .setSpeed(1.0f)
                 // Set the volume. The range is (0, 2). 1.0 indicates a normal volume.
@@ -129,6 +250,7 @@ public class Text_Translation extends AppCompatActivity {
         mlTtsEngine.setTtsCallback(callback);
 
         mlTtsEngine.speak(sourceText, MLTtsEngine.QUEUE_APPEND);
+
     }
 
 
@@ -197,55 +319,4 @@ public class Text_Translation extends AppCompatActivity {
             }
         }
     };
-
-    private void remoteTranslator_english_to_chinese(String sourceText) {
-        MLApplication.getInstance().setApiKey(getResources().getString(R.string.api_key));
-        MLRemoteTranslateSetting setting =
-                new MLRemoteTranslateSetting
-                        .Factory()
-                        .setSourceLangCode("en")
-                        .setTargetLangCode("zh")
-                        .create();
-        MLRemoteTranslator remoteTranslator = MLTranslatorFactory.getInstance().getRemoteTranslator(setting);
-        Task<String> task = remoteTranslator.asyncTranslate(sourceText);
-        task.addOnSuccessListener(new OnSuccessListener<String>() {
-            @Override
-            public void onSuccess(String text) {
-                et_output.setText(text);
-                Toast.makeText(getApplicationContext(), "Success translating...", Toast.LENGTH_SHORT).show();
-            }
-
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(Exception e) {
-                Toast.makeText(getApplicationContext(), "Failed translating...", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void remoteTranslator_chinese_to_english(String sourceText) {
-        MLApplication.getInstance().setApiKey(getResources().getString(R.string.api_key));
-        MLRemoteTranslateSetting setting =
-                new MLRemoteTranslateSetting
-                        .Factory()
-                        .setSourceLangCode("zh")
-                        .setTargetLangCode("en")
-                        .create();
-        MLRemoteTranslator remoteTranslator = MLTranslatorFactory.getInstance().getRemoteTranslator(setting);
-        Task<String> task = remoteTranslator.asyncTranslate(sourceText);
-        task.addOnSuccessListener(new OnSuccessListener<String>() {
-            @Override
-            public void onSuccess(String text) {
-                et_output.setText(text);
-                Toast.makeText(getApplicationContext(), "Success translating...", Toast.LENGTH_SHORT).show();
-            }
-
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(Exception e) {
-                Toast.makeText(getApplicationContext(), "Failed translating...", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
 }
